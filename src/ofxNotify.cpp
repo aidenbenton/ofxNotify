@@ -52,6 +52,12 @@ void ofxNotify::draw(bool shouldDraw_){
 	
 	// -------- Invariant: there are messages to display.
 	
+	// Remove earliest messages that don't fit on sceen.
+    
+    	while (50 + messages.size() * 20 > ofGetHeight()) {
+        	messages.erase(messages.begin());
+    	}
+	
 	unsigned long long elapsedTimeNow = ofGetElapsedTimeMicros();
 	
 	map<unsigned long long, string>::iterator it = messages.begin();
